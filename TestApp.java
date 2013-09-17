@@ -88,10 +88,10 @@ class TestApp extends JFrame implements ActionListener {
         east.add(sortTime);
 
         pane = new JScrollPane();
-        
+
         pane.setPreferredSize(new Dimension(250, 300));
         center.add(pane);
-
+        pane.getViewport().add(list);
         getContentPane().add(panel);
         //exBut.setBounds(50,60,80,30);
 
@@ -118,18 +118,29 @@ class TestApp extends JFrame implements ActionListener {
             System.exit(0);
         } else if (e.getSource() == show) {
             System.out.println("Show");
-            list = new JList(m.getRunnersArray().toArray());
-            pane.getViewport().add(list);
+            list.setListData(m.getRunnersArray().toArray());
+            //     pane.getViewport().add(list);
+            pane.getViewport().setView(list);
         } else if (e.getSource() == add) {
             System.out.println("Add");
         } else if (e.getSource() == sortStartNr) {
             System.out.println("Start");
-        } else if (e.getSource()== sortName) {
+            list.setListData(m.getRunnersArray().toArray());
+            pane.getViewport().setView(list);
+        } else if (e.getSource() == sortName) {
             System.out.println("Name");
-        } else if (e.getSource()== sortAge){
+            list.setListData(m.getSortName().toArray());
+            pane.getViewport().setView(list);
+            //   list.setListData(listData);
+        } else if (e.getSource() == sortAge) {
             System.out.println("Age");
-        }else if (e.getSource() == sortTime){
+            list.setListData(m.getSortAge().toArray());
+            pane.getViewport().setView(list);
+            System.out.println(m.toString());
+        } else if (e.getSource() == sortTime) {
             System.out.println("time");
+            list.setListData(m.getSortTime().toArray());
+            pane.getViewport().setView(list);
         }
     }
 

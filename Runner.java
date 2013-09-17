@@ -23,6 +23,14 @@ public class Runner {
         this.age = age;
         this.time = "--";
     }
+    
+        public Runner(int startNumber, String name, String nationality, int age, String time) {
+        this.startNumber = startNumber;
+        this.name = name;
+        this.nationality = nationality;
+        this.age = age;
+        this.time = time;
+    }
 
     public void setTime(String time) {
         this.time = time;
