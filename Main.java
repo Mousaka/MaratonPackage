@@ -1,7 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package MaratonPackage;
 
 /**
@@ -11,6 +9,8 @@ package MaratonPackage;
 public class Main {
     
     public static void main(String args[]){
-         Maraton m = new Maraton();
+         Marathon m = new Marathon();
+         Gui g = new Gui(m);
+         g.setVisible(true);
     }
 }

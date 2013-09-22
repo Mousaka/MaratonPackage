@@ -1,9 +1,5 @@
 package MaratonPackage;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author krille
@@ -16,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-class TestApp extends JFrame implements ActionListener {
+class Gui extends JFrame implements ActionListener {
 
     JLabel häls = new JLabel("DSV Kista Marathon");
     JLabel namn = new JLabel("DSV Kista Marathon");
@@ -33,11 +29,11 @@ class TestApp extends JFrame implements ActionListener {
     JRadioButton sortAge = new JRadioButton("Ålder");
     JRadioButton sortTime = new JRadioButton("Tid");
     JScrollPane pane;
-    Maraton m;
+    Marathon m;
 
-    TestApp() {
+    Gui(Marathon m) {
         super("Hej!");
-        m = new Maraton();
+        this.m = m;
         initUI();
     }
 
@@ -81,7 +77,7 @@ class TestApp extends JFrame implements ActionListener {
         group.add(sortAge);
         group.add(sortTime);
 
-        // Visa radio grupp?
+  
         east.add(sortStartNr);
         east.add(sortName);
         east.add(sortAge);
@@ -105,7 +101,8 @@ class TestApp extends JFrame implements ActionListener {
         bottom.add(add);
         bottom.add(show);
         bottom.add(exBut);
-
+        
+        
         setTitle("Fina programemt");
         setSize(400, 500);
         setLocationRelativeTo(null);
@@ -121,7 +118,9 @@ class TestApp extends JFrame implements ActionListener {
             list.setListData(m.getRunnersArray().toArray());
             //     pane.getViewport().add(list);
             pane.getViewport().setView(list);
-        } else if (e.getSource() == add) {
+        } else if(e.getSource()==add){
+            String name = JOptionPane.showInputDialog(pane,"What is your name?",null);
+        }else if (e.getSource() == add) {
             System.out.println("Add");
         } else if (e.getSource() == sortStartNr) {
             System.out.println("Start");
@@ -144,14 +143,4 @@ class TestApp extends JFrame implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                TestApp ex = new TestApp();
-                ex.setVisible(true);
-            }
-        });
-    }
 }

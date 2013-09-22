@@ -11,13 +11,13 @@ import java.util.Collections;
  *
  * @author krille
  */
-public class Maraton {
+public class Marathon {
 
     private int startNum = 0;
     private RunnersArray runnerList = new RunnersArray();
     private ArrayList<Runner> temp;
 
-    public Maraton() {
+    public Marathon() {
         System.out.println("Start..");
         System.out.println("Adding runner to list..");
         newRunner(++startNum, "Kalle Balle", "Sweden", 15);
