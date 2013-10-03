@@ -28,9 +28,10 @@ class Gui extends JFrame implements ActionListener {
     JRadioButton sortName = new JRadioButton("Namn");
     JRadioButton sortAge = new JRadioButton("Ålder");
     JRadioButton sortTime = new JRadioButton("Tid");
+    JPanel panel;
     JScrollPane pane;
     Marathon m;
-
+    FillOut f;
     Gui(Marathon m) {
         super("Hej!");
         this.m = m;
@@ -38,7 +39,7 @@ class Gui extends JFrame implements ActionListener {
     }
 
     private void initUI() {
-        JPanel panel = new JPanel(new BorderLayout());
+        panel = new JPanel(new BorderLayout());
         JPanel top = new JPanel();
         JPanel bottom = new JPanel();
         JPanel east = new JPanel(new GridLayout(0, 1));
@@ -94,7 +95,7 @@ class Gui extends JFrame implements ActionListener {
         exBut.addActionListener(this);
         top.add(namn);
 
-
+        
         show.addActionListener(this);
         add.addActionListener(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -111,6 +112,7 @@ class Gui extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+       
         if (e.getSource() == exBut) {
             System.exit(0);
         } else if (e.getSource() == show) {
@@ -119,10 +121,10 @@ class Gui extends JFrame implements ActionListener {
             //     pane.getViewport().add(list);
             pane.getViewport().setView(list);
         } else if(e.getSource()==add){
-            String name = JOptionPane.showInputDialog(pane,"What is your name?",null);
-        }else if (e.getSource() == add) {
-            System.out.println("Add");
-        } else if (e.getSource() == sortStartNr) {
+            f= new FillOut();
+            JOptionPane.showConfirmDialog(panel, f);
+            System.out.println("Hm." + f.getName());
+        }else if (e.getSource() == sortStartNr) {
             System.out.println("Start");
             list.setListData(m.getRunnersArray().toArray());
             pane.getViewport().setView(list);
@@ -140,7 +142,13 @@ class Gui extends JFrame implements ActionListener {
             System.out.println("time");
             list.setListData(m.getSortTime().toArray());
             pane.getViewport().setView(list);
+        } else if(e.getSource() == f.getOk()){
+            System.out.println("YEES hit.");
         }
+    }
+    
+    public void addRunner(){
+        System.out.println("Inne i addRunner");
     }
 
 }
