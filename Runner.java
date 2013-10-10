@@ -14,17 +14,20 @@ public class Runner {
     private String name;
     private String nationality;
     private int age;
-    private String time;
+    private double time;
+    private boolean timeGiven;
 
     public Runner(int startNumber, String name, String nationality, int age) {
         this.startNumber = startNumber;
         this.name = name;
         this.nationality = nationality;
         this.age = age;
-        this.time = "--";
+        this.time = Double.MAX_VALUE;
+        timeGiven = false;
+
     }
-    
-        public Runner(int startNumber, String name, String nationality, int age, String time) {
+
+    public Runner(int startNumber, String name, String nationality, int age, double time) {
         this.startNumber = startNumber;
         this.name = name;
         this.nationality = nationality;
@@ -32,8 +35,9 @@ public class Runner {
         this.time = time;
     }
 
-    public void setTime(String time) {
+    public void setTime(double time) {
         this.time = time;
+        timeGiven = true;
     }
 
     public int getStartNumber() {
@@ -52,11 +56,15 @@ public class Runner {
         return age;
     }
 
-    public String getTime() {
+    public double getTime() {
         return time;
     }
 
     public String toString() {
-        return startNumber + " " + name + " " + nationality + " " + age + " " + time;
+        if (!timeGiven) {
+            return startNumber + " " + name + " " + nationality + " " + age + " " + "--";
+        } else {
+            return startNumber + " " + name + " " + nationality + " " + age + " " + time;
+        }
     }
 }

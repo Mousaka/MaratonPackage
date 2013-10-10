@@ -18,6 +18,7 @@ public class Marathon {
     private ArrayList<Runner> temp;
 
     public Marathon() {
+        /*
         System.out.println("Start..");
         System.out.println("Adding runner to list..");
         newRunner(++startNum, "Kalle Balle", "Sweden", 15);
@@ -29,6 +30,7 @@ public class Marathon {
         runnerList.add(new Runner(++startNum, "Rebo", "Finland", 25, "03:22:00"));
         runnerList.add(new Runner(++startNum, "Bbba", "Dengland", 33, "03:21:01"));
         runnerList.add(new Runner(++startNum, "Cbba", "BEngland", 13, "02:22:01"));
+        */
         System.out.println(runnerList.toString());
 
 
@@ -37,7 +39,11 @@ public class Marathon {
     public void newRunner(int startNumber, String name, String nationality, int age) {
         runnerList.add(new Runner(startNumber, name, nationality, age));
     }
-
+    
+    public void addTime(int startNr, double time){
+        runnerList.addTime(startNr, time);
+        System.out.println("Time added");
+    }
     public ArrayList<Runner> getSortName() {
         temp = new ArrayList<Runner>(runnerList.getRunnerList());
         Collections.sort(temp, new ComparatorName());

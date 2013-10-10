@@ -17,22 +17,34 @@ public class FillOut extends JPanel{
 
     private JLabel startNr, name, nationality, age;
     private JTextField nameText, nationalityText, ageText;
-    public JTextField getNameText() {
-        return nameText;
+    private static int stNr = 1;
+    public void emptyFields(){
+        nameText.setText("");
+        nationalityText.setText("");
+        ageText.setText("");
+    }
+    public String getNameText() {
+        return nameText.getText();
+    }
+    
+    public void addOneStartNr(){
+        stNr++;
+    }
+    
+    public int getStartNr(){
+        return stNr;
     }
 
-    public JTextField getNationalityText() {
-        return nationalityText;
+    public String getNationalityText() {
+        return nationalityText.getText();
     }
 
-    public JTextField getAgeText() {
-        return ageText;
+    public int getAgeText() {
+        System.out.println("ageText: "+ageText.getText());
+        return Integer.parseInt(ageText.getText());
     }
-    private JButton ok, cancel;
 
-    public JButton getOk() {
-        return ok;
-    }
+
     JPanel pane, pane2, pName,pAge,pNationality;
 
     public FillOut() {
@@ -43,7 +55,7 @@ public class FillOut extends JPanel{
         pName = new JPanel();
         pNationality = new JPanel();
         
-        startNr = new JLabel("Startnr 1");
+        startNr = new JLabel("Startnr "+ stNr);
         pane.add(startNr);
         name = new JLabel("Namn: ");
         pName.add(name);
@@ -65,12 +77,7 @@ public class FillOut extends JPanel{
         ageText = new JTextField(5);
         pAge.add(ageText);
         pane.add(pAge);
-        ok = new JButton("Spara");
-        pane2.add(ok);
-        cancel = new JButton("Avbryt");
-
-        pane2.add(cancel);
-        pane.add(pane2);
+       
         
         add(pane);
         setLayout(new FlowLayout());

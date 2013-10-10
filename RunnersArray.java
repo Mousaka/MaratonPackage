@@ -4,6 +4,7 @@
  */
 package MaratonPackage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -19,7 +20,10 @@ public class RunnersArray {
     public ArrayList<Runner> getRunnerList() {
         return runnerList;
     }
-
+    
+    public void addTime(int startnr, double time){
+        runnerList.get(startnr-1).setTime(time);
+    }
     public RunnersArray() {
         runnerList = new ArrayList<Runner>();
     }
