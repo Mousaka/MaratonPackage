@@ -127,13 +127,19 @@ class Gui extends JFrame implements ActionListener {
 
         if (e.getSource() == timeBut) {
             System.out.println("Hm");
-            
+
             int i = JOptionPane.showConfirmDialog(panel, f2, "popup", JOptionPane.YES_OPTION);
             if (i == JOptionPane.YES_OPTION) {
                 System.out.println("Yes: " + i);
                 m.addTime(f2.getStartNrText(), f2.getTimeText());
             }
             f2.emptyFields();
+
+            list.setListData(m.getSortAge().toArray());
+            pane.getViewport().setView(list);
+
+
+
         } else if (e.getSource() == show) {
             //System.out.println("Show");
             list.setListData(m.getRunnersArray().toArray());
@@ -148,10 +154,14 @@ class Gui extends JFrame implements ActionListener {
                 m.newRunner(f.getStartNr(), f.getNameText(), f.getNationalityText(), f.getAgeText());
                 f.addOneStartNr();
                 pane.getViewport().setView(list);
-                f.revalidate();
+
                 System.out.println("STARTNR:: " + f.getStartNr());
             }
+            
+            list.setListData(m.getSortAge().toArray());
             pane.getViewport().setView(list);
+
+
 
 
         } else if (e.getSource() == sortStartNr) {
