@@ -13,27 +13,37 @@ import javax.swing.*;
  *
  * @author krille
  */
-public class FillOutTime extends JPanel{
+public class FillOutTime extends JPanel {
 
     private JLabel startNr, time;
     private JTextField startNrText, timeText;
-    
-    
-    public void emptyFields(){
+
+    public void emptyFields() {
         startNrText.setText("");
         timeText.setText("");
     }
+
     public int getStartNrText() {
-        return Integer.parseInt(startNrText.getText());
+        int i;
+        try {
+            i = Integer.parseInt(startNrText.getText());
+        } catch (NumberFormatException e) {
+            i = -1;
+        }
+        return i;
     }
 
     public double getTimeText() {
-        System.out.println("TimeText: "+timeText.getText());
-        return Double.parseDouble(timeText.getText());
+        System.out.println("TimeText: " + timeText.getText());
+        double i;
+        try {
+            i = Double.parseDouble(timeText.getText());
+        } catch (NumberFormatException e) {
+            i = -1;
+        }
+        return i;
     }
-
-
-    JPanel pane, pane2, pStartnr,pTime,pNationality;
+    JPanel pane, pane2, pStartnr, pTime, pNationality;
 
     public FillOutTime() {
         pane = new JPanel();
@@ -41,30 +51,28 @@ public class FillOutTime extends JPanel{
         pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
         pTime = new JPanel();
         pStartnr = new JPanel();
-        
-        
+
+
         startNr = new JLabel("Startnr: ");
         pStartnr.add(startNr);
-                       
+
         startNrText = new JTextField(6);
         pStartnr.add(startNrText);
         pane.add(pStartnr);
-             
+
         time = new JLabel("Tid: ");
         pTime.add(time);
 
         timeText = new JTextField(5);
         pTime.add(timeText);
         pane.add(pTime);
-       
-        
+
+
         add(pane);
         setLayout(new FlowLayout());
-      //  setTitle("Ny tävlande");
-      //  setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //  setTitle("Ny tävlande");
+        //  setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 200);
-    //    setLocationRelativeTo(null);
+        //    setLocationRelativeTo(null);
     }
-
- 
 }

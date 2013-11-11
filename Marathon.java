@@ -37,7 +37,9 @@ public class Marathon {
     }
 
     public void newRunner(int startNumber, String name, String nationality, int age) {
+        startNum ++;
         runnerList.add(new Runner(startNumber, name, nationality, age));
+        
     }
     
     public void addTime(int startNr, double time){
@@ -65,7 +67,10 @@ public class Marathon {
     public ArrayList<Runner> getRunnersArray() {
         return runnerList.getRunnerList();
     }
-
+    public int getStartnum(){
+        
+        return startNum;
+    }
     public String toString() {
         return runnerList.toString();
     }

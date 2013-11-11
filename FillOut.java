@@ -41,7 +41,13 @@ public class FillOut extends JPanel{
 
     public int getAgeText() {
         System.out.println("ageText: "+ageText.getText());
-        return Integer.parseInt(ageText.getText());
+        int i;
+        try{
+         i = Integer.parseInt(ageText.getText());
+        }catch(NumberFormatException e){
+         i = -1;   
+        }
+        return i;
     }
 
 
@@ -85,7 +91,9 @@ public class FillOut extends JPanel{
       //  setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 200);
     //    setLocationRelativeTo(null);
+        
+        System.out.println("Nametext: "+ getNameText());
     }
 
- 
+    
 }
